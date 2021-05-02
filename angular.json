@@ -120,5 +120,8 @@
       }
     }
   },
-  "defaultProject": "chatRealTime"
+  "defaultProject": "chatRealTime",
+  "cli": {
+    "analytics": false
+  }
 }
