@@ -13,6 +13,7 @@ export class Basic2Guard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
       if(localStorage.getItem('jwt')!=undefined){
+        console.log("entra al guard");
         return this.router.navigate(['../../chats']).then(()=>false);
       }
     return true;
