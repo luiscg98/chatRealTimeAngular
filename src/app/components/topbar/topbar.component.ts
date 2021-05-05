@@ -4,6 +4,7 @@ import { faUser, faSortDown } from '@fortawesome/free-solid-svg-icons' ;
 import { DataService } from 'src/app/services/data.service';
 import { SocketioService } from 'src/app/services/socketio.service';
 import {environment} from '../../../environments/environment';
+import jwt_Decode from 'jwt-decode';
 
 @Component({
   selector: 'app-topbar',
@@ -14,17 +15,12 @@ export class TopbarComponent implements OnInit {
 
   faUser=faUser;
   faSortDown=faSortDown;
+  token:any;
 
   constructor(private router: Router, private data:DataService, private socket:SocketioService) { }
 
-  ngOnInit(): void {
-  }
-
-  async logout(){
-    this.data.sendCriterio(false);
-    this.socket.emit('logOut',{token:localStorage.getItem('jwt'),apikey:environment.API_KEY});
-    await localStorage.removeItem('jwt');
-    this.router.navigate(['../auth/login']);
+  async ngOnInit(): Promise<void> {
+    this.token = await jwt_Decode(localStorage.getItem('jwt'));
   }
 
 }

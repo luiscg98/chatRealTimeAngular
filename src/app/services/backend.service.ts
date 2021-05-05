@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class BackendService {
 
-  url='http://localhost:3000/api'
+  url='http://node.midominio.com/api'
 
   constructor(private http:HttpClient) { }
 

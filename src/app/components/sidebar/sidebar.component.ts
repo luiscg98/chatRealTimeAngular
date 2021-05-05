@@ -30,6 +30,7 @@ export class SidebarComponent implements OnInit {
       bandera:0
     }
     this.socket.emit('actualizarCorreo',payload);
+    console.log(this.token);
   }
 
 }
